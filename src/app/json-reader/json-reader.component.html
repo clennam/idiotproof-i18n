@@ -1,0 +1,12 @@
+<div *ngIf="json">
+    <div class="key-value-pair" *ngFor="let key of jsonKeys">
+        |  <span class="key">{{ key }}</span>:
+        <span class="simple-value-wrapper" *ngIf="!checkIfComplex(json[key])">
+            <input class="value" [value]="json[key]" />
+            <button class="add" (click)="addKey()">+</button>
+        </span>
+        <div class="complex-value-wrapper" style="margin-left: 2em;" *ngIf="checkIfComplex(json[key])">
+            <app-json-reader [json]="json[key]"></app-json-reader>
+        </div>
+    </div>
+</div>
